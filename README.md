@@ -5,6 +5,10 @@ The challenge was to create a dialogue-focused vocal enhancement plugin, with at
 
 For my submission, titled Suite Talk, I designed a signal chain that aims to remove silibance and plosives, boost speech harmonics for clarity, remove 60 cycle hum, as well as use ML-driven speech enhancement to reduce the relative volume of non-speech sounds.
 
+The primary file is found in [suiteTalk.m](https://github.com/bakerbass/VAD-Hackathon/blob/main/suiteTalk.m).
+
+Code generation will not pass unless a Deep Learning Library is chosen.
+
 # Parameters
 ![GUIhires](https://github.com/user-attachments/assets/1c28e900-909b-4ab2-89fc-5757656a151a)
 
