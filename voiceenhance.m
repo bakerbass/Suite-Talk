@@ -8,7 +8,7 @@ classdef voiceenhance < audioPlugin & matlab.System
     properties
         AttackTime    = 0.01
         ReleaseTime   = 0.05
-        ClosedGain_dB = -80
+        ClosedGain_dB = 0
     end
 
     properties (Constant)
@@ -21,14 +21,13 @@ classdef voiceenhance < audioPlugin & matlab.System
                 Mapping = {'log', 0.001, 1}), ...
             audioPluginParameter("ClosedGain_dB", ...
                 DisplayName = "Gate Floor (dB)", ...
-                Mapping = {'lin', -120, -20}), ...
+                Mapping = {'lin', -120, 0}), ...
             'PluginName', 'My Vocal Enhancer');
         FFTLength = 4096
     end
 
     properties (Access = private)
         vadObj               % System object for VAD
-        enhanceObj           % System object or function handle for enhanceSpeech
         ring                 % Stereo ring buffer [8192 x 2]
         frameBuffer          % [8192 x 2] fixed buffer for enhanceSpeech input
         vadFrameBuffer       % [8192 x 1] fixed buffer for VAD input (mono)
@@ -59,7 +58,6 @@ classdef voiceenhance < audioPlugin & matlab.System
             plugin.bufferFill = 0;
             plugin.envState = 0;
             % Use MATLAB's built-in enhanceSpeech (assume function call)
-            plugin.enhanceObj = @enhanceSpeech;
             plugin.audioHistory = zeros(plugin.historyLen, 1);
             plugin.gateHistory  = zeros(plugin.historyLen, 1);
         end
@@ -163,7 +161,7 @@ classdef voiceenhance < audioPlugin & matlab.System
                 % --- Enhance speech for stereo ---
                 enhanced = zeros(plugin.FFTLength, nCh, 'like', in);
                 for ch = 1:nCh
-                    enhanced(:,ch) = plugin.enhanceObj(plugin.frameBuffer(:,ch), fs);
+                    enhanced(:,ch) = enhanceSpeech(plugin.frameBuffer(:,ch), fs);
                 end
                 % --- Compute gating mask from VAD ---
                 threshold = plugin.probThreshold; % internal threshold
