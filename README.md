@@ -5,6 +5,13 @@ The challenge was to create a dialogue-focused vocal enhancement plugin, with at
 
 For my submission, titled Suite Talk, I designed a signal chain that aims to remove silibance and plosives, boost speech harmonics for clarity, remove 60 cycle hum, as well as use ML-driven speech enhancement to reduce the relative volume of non-speech sounds.
 
+# Parameters
+![GUIhires](https://github.com/user-attachments/assets/1c28e900-909b-4ab2-89fc-5757656a151a)
+
+The top row of parameters control the noise gate. Default values should cause no unwanted attenuation. The floor controls the lowest level the signal can be attenuated by.
+The middle row controls the speech enhancer and hum reducer. Both parameters can be toggled off entirely.
+The last row control the compression ratio and provided a toggle for the limiter.
+
 # Design and Challenges
 The block diagram shows the signal flow of the plugin from a higher-level overview.
 ![Suite Talk Block Diagram](https://github.com/user-attachments/assets/8a8a11d6-6883-406b-b303-2c6e313a4d28)
