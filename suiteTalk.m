@@ -322,7 +322,7 @@ classdef suiteTalk < audioPlugin & matlab.System
             dp = rms(abs(plosiveBand)) * -5;
             plugin.mPEQ.PeakGains = [dp(1), plugin.lmBoost_G, plugin.hmBoost_G, ds(1)];
             eqOut = plugin.mPEQ(out(:,1:2));
-            % === Crossfade smoothing at buffer edge ===
+            % === Crossfade smoothing at buffer edge (specifically for speech enhancer) ===
             if N > 31
                 if plugin.isFirstBuffer
                     % nothing to blend
