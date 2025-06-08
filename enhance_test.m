@@ -1,0 +1,1 @@
+out = enhanceSpeech(zeros(300, 1), 48000)
