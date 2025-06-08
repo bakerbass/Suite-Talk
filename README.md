@@ -21,7 +21,7 @@ The last row control the compression ratio and provided a toggle for the limiter
 
 # Design and Challenges
 The block diagram shows the signal flow of the plugin from a higher-level overview.
-![Suite Talk Block Diagram](https://github.com/user-attachments/assets/8a8a11d6-6883-406b-b303-2c6e313a4d28)
+![Suite Talk Block Diagram](https://github.com/user-attachments/assets/c8089991-5b2f-40bb-98bf-9de499098e5f)
 
 The most difficult aspect of this challenge was implementing the [enhanceSpeech](https://www.mathworks.com/help/audio/ref/enhancespeech.html) function into a real time environment that is compatible with MATLAB code generation.
 
