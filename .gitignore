@@ -1,0 +1,6 @@
+*.vst3
+*.mexw64
+*.asv
+*.wav
+*.pptx
+/audioplugin
